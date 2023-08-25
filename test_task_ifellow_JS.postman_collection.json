@@ -184,19 +184,10 @@
 			"response": []
 		},
 		{
-			"name": "Delete Task",
+			"name": "Get Task by ID Copy",
 			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"name\":\"Updated Task\",\"description\":\"Updated description of the task\"}"
-				},
+				"method": "GET",
+				"header": [],
 				"url": {
 					"raw": "http://localhost:3002/api/v1/task/{{task_id}}",
 					"protocol": "http",
@@ -358,6 +349,28 @@
 			"response": []
 		},
 		{
+			"name": "Get Solutions by Task ID Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/v1/task_solution/{{task_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"task_solution",
+						"{{task_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Delete Solution",
 			"request": {
 				"method": "DELETE",
@@ -374,6 +387,81 @@
 						"v1",
 						"solution",
 						"{{solution_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Solutions by Task ID Copy 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/v1/task_solution/{{task_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"task_solution",
+						"{{task_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Updated Task\",\"description\":\"Updated description of the task\"}"
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/v1/task/{{task_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"task",
+						"{{task_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task by ID Copy 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/v1/task/{{task_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"task",
+						"{{task_id}}"
 					]
 				}
 			},
