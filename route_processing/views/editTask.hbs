@@ -1,0 +1,31 @@
+<div class="text-center">
+    <h2> Редактирование Задачи {{task.name}} </h2>
+</div>
+<div>
+    <form action="/addTask/{{task.id}}" method="post" >
+          <input type="hidden" name="id" value="{{task.id}}">
+         <div>
+             <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="name" id="validationDefault01" required>{{task.name}}</textarea>
+                <label for="floatingTextarea" >Название задачи</label>
+             </div>
+        </div>
+         <div class="mb-3">
+               <label for="floatingTextarea" >Описание задачи</label>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="description" id="validationDefault01" required rows="5">{{task.description}}</textarea>
+             </div>
+         <div class="d-grid gap-2 col-2 mx-auto">
+              <input type="hidden" name="_method" value="PUT">
+            <button type="submit"  class="btn btn-outline-dark justify-content-between">Изменить Задачу</button>
+         </div>
+
+    </form>
+     <form action="/addTask/{{task.id}}" method="post" >
+          <div class="d-grid gap-2 col-2 mx-auto">
+                <input type="hidden" name="id" value="{{task.id}}">
+              <input type="hidden" name="_method" value="DELETE">
+            <button type="submit"  class="btn btn-outline-dark justify-content-between">Удалить Задачу</button>
+         </div>
+     </form>
+
+</div>

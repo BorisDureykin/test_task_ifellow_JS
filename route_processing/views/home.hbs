@@ -1,0 +1,25 @@
+
+
+<div class="text-center">
+    <h2> Входное тестовое задание </h2>
+<!--    Go to our <a href="/catalog" >Catalog</a>-->
+</div>
+<ul class="nav ">
+    {{#each taskList}}
+
+            <div class="card w-75 mx-auto" >
+                <div class="card-header">
+                        {{this.name}}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{this.description}}</p>
+                    <div class="d-grid gap-2">
+                    <a href="../task/{{this.id}}" class="btn btn-outline-dark">Выполнить</a>
+
+                        <a href="../editTask/{{this.id}}" class="btn btn-outline-dark ">Редактировать</a>
+                    </div>
+                </div>
+            </div>
+
+    {{/each}}
+</ul>

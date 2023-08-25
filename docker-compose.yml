@@ -1,0 +1,20 @@
+version: '3'
+services:
+  route_processing:
+    build:
+      context: ./route_processing
+    ports:
+      - "3000:3000"
+    networks:
+      - mynetwork
+
+  task_processing:
+    build:
+      context: ./task_processing
+    ports:
+      - "3002:3002"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

@@ -1,0 +1,59 @@
+<div class="text-center">
+    <h2> {{task.name}}</h2>
+</div>
+<div class="card-body">
+    <div class="text-center">
+            <h5> {{task.description}} </h5>
+    </div>
+</div>
+
+<div class="text-center">
+    <h3> Решения задачи</h3>
+</div>
+ {{#each solutions}}
+    <div class="card w-50 mb-3 mx-auto">
+        <div class="card-body">
+            <div >
+                <h4>Название решения: {{this.name}}</h4>
+                <h5>Язык выполнения: {{this.language}}</h5>
+                <div class="d-grid gap-2">
+                    <a class="btn btn-outline-dark" data-bs-toggle="collapse" href="#collapseExample{{this.id}}"
+                       role="button" aria-expanded="false" aria-controls="collapseExample">Посмотреть</a>
+                </div>
+            </div>
+            <div class="collapse" id="collapseExample{{this.id}}">
+                <div class="mb-3">
+                    <textarea class="form-control" disabled id="floatingTextarea" name="description"
+                              id="validationDefault01" required rows="10">{{this.description}}</textarea>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseWidthExample" aria-expanded="false"
+                                aria-controls="collapseWidthExample">Редактировать
+                        </button>
+                    </div>
+                    <div >
+                      <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                          <form action="/addSolution/{{this.id}}" method="post">
+                              <input type="hidden" name="taskID" value={{this.task_id}}>
+                                <input type="hidden" name="_method" value="PUT">
+                                <textarea class="form-control"  id="floatingTextarea" name="description"
+                                id="validationDefault01" required rows="10">{{this.description}}</textarea>
+                              <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-outline-dark">Сохранить</button>
+                              </div>
+                          </form>
+                          <form action="/addSolution/{{this.id}}" method="post">
+                              <input type="hidden" name="_method" value="DELETE">
+                              <input type="hidden" name="taskID" value={{this.task_id}}>
+                              <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-outline-dark">Удалить</button>
+                              </div>
+                          </form>
+
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ {{/each}}
