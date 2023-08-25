@@ -48,5 +48,5 @@
 ## API Тестирование
 
 - Использовать Postman
-- Осуществить импорт файла test_task_ifellow_JS.postman_collection
+- Осуществить импорт из файла test_task_ifellow_JS.postman_collection
 - Проверить работу API и сохранение решений в db 
