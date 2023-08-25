@@ -44,3 +44,9 @@
 - `GET /api/v1/task_solution/:id` - получение решений для задачи.
 - `PUT /api/v1/solution/:id` - изменение решения по ID.
 - `DELETE /api/v1/solution/:id` - удаление решения по ID.
+
+## API Тестирование
+
+- Использовать Postman
+- Осуществить импорт файла test_task_ifellow_JS.postman_collection
+- Проверить работу API и сохранение решений в db 
