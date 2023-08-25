@@ -5,6 +5,8 @@ services:
       context: ./route_processing
     ports:
       - "3000:3000"
+    depends_on:
+      - task_processing
     networks:
       - mynetwork
 
