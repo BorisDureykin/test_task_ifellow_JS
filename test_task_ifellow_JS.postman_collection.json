@@ -48,7 +48,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3002/api/v1/task/1",
+					"raw": "http://localhost:3002/api/v1/task/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -58,7 +58,7 @@
 						"api",
 						"v1",
 						"task",
-						"1"
+						"11"
 					]
 				}
 			},
@@ -66,20 +66,41 @@
 		},
 		{
 			"name": "Create Task",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomNum = Math.floor(Math.random() * 1000);\r",
+							"\r",
+							"const timestamp = new Date().getTime();\r",
+							"\r",
+							"const taskName = `Task-${timestamp}-${randomNum}`;\r",
+							"\r",
+							"const descriptionTask = `Описание задачи-${timestamp}-${randomNum}`;\r",
+							"\r",
+							"pm.environment.set(\"taskName\", taskName);\r",
+							"\r",
+							"pm.environment.set(\"descriptionTask\", descriptionTask);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"New Task\",\"description\":\"Description of the new task\"}"
+					"raw": "{\r\n  \"name\": \"{{taskName}}\",\r\n  \"description\": \"{{descriptionTask}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://localhost:3002/api/v1/task",
+					"raw": "http://localhost:3002/api/v1/task/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -88,7 +109,8 @@
 					"path": [
 						"api",
 						"v1",
-						"task"
+						"task",
+						""
 					]
 				}
 			},
@@ -96,8 +118,60 @@
 		},
 		{
 			"name": "Update Task",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomNum = Math.floor(Math.random() * 1000);\r",
+							"\r",
+							"const timestamp = new Date().getTime();\r",
+							"\r",
+							"const taskName = `Новое имя-${timestamp}-${randomNum}`;\r",
+							"\r",
+							"const newdescriptionTask = `Новое описание задачи-${timestamp}-${randomNum}`;\r",
+							"\r",
+							"pm.environment.set(\"taskName\", taskName);\r",
+							"\r",
+							"pm.environment.set(\"newdescriptionTask\", newdescriptionTask);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{taskName}}\",\r\n    \"description\":\"{{newdescriptionTask}} \"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/v1/task/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"task",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -109,7 +183,7 @@
 					"raw": "{\"name\":\"Updated Task\",\"description\":\"Updated description of the task\"}"
 				},
 				"url": {
-					"raw": "http://localhost:3002/api/v1/task/1",
+					"raw": "http://localhost:3002/api/v1/task/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -119,29 +193,7 @@
 						"api",
 						"v1",
 						"task",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Task",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3002/api/v1/task/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3002",
-					"path": [
-						"api",
-						"v1",
-						"task",
-						"1"
+						"10"
 					]
 				}
 			},
@@ -149,6 +201,27 @@
 		},
 		{
 			"name": "Create Solution",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomNum = Math.floor(Math.random() * 1000);\r",
+							"\r",
+							"const timestamp = new Date().getTime();\r",
+							"\r",
+							"const SolutionName = `Решение-${timestamp}-${randomNum}`;\r",
+							"\r",
+							"const SolutionDescription = `Описание решения-${timestamp}-${randomNum}`;\r",
+							"\r",
+							"pm.environment.set(\"SolutionName\", SolutionName);\r",
+							"\r",
+							"pm.environment.set(\"SolutionDescription\", SolutionDescription);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -159,7 +232,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"New Solution\",\"description\":\"Description of the new solution\",\"language\":\"Java\",\"task_id\":1}"
+					"raw": "{\r\n  \"name\": \"{{SolutionName}}\",\r\n  \"description\":\"{{SolutionDescription}}\",\r\n  \"language\":\"Java\",\r\n  \"task_id\":1\r\n  }"
 				},
 				"url": {
 					"raw": "http://localhost:3002/api/v1/solution",
@@ -201,20 +274,37 @@
 		},
 		{
 			"name": "Update Solution",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomNum = Math.floor(Math.random() * 1000);\r",
+							"\r",
+							"const timestamp = new Date().getTime();\r",
+							"\r",
+							"const newSolutionDescription = `Новое описание решения-${timestamp}-${randomNum}`;\r",
+							"\r",
+							"pm.environment.set(\"newSolutionDescription\", newSolutionDescription);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"description\":\"Updated description of the solution\"}"
+					"raw": "{\r\n    \"description\":\"{{newSolutionDescription}}\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://localhost:3002/api/v1/solution/1",
+					"raw": "http://localhost:3002/api/v1/solution/27",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -224,7 +314,7 @@
 						"api",
 						"v1",
 						"solution",
-						"1"
+						"27"
 					]
 				}
 			},
@@ -236,7 +326,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3002/api/v1/solution/1",
+					"raw": "http://localhost:3002/api/v1/solution/27",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,7 +336,7 @@
 						"api",
 						"v1",
 						"solution",
-						"1"
+						"27"
 					]
 				}
 			},
