@@ -33,7 +33,7 @@ app.set('view engine', 'hbs');
 // Функция для выполнения http-запросов !!!!
 function performHttpRequest(path, method, headers, body) {
      const httpOptions = {
-            hostname: 'localhost',
+            hostname: 'task_processing', //localhost   task_processing
             port: 3002,
             path: path,
             method: method,
